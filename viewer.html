@@ -1,0 +1,34 @@
+<html>
+<head>
+	<title>HTML5 Security Camera Viewer</title>
+</head>
+<body>
+<div id="container"></div>
+
+<div class="imageDump">
+	
+</div>
+
+<style type="text/css">
+	video {
+		display:none;
+	}
+	.imageDump img {
+		width:175px;
+	}
+</style>
+
+<script src="jquery.js"></script>
+<script src="http://test.com:9000/socket.io/socket.io.js"></script>
+<script src="index.js"></script>
+<script type="text/javascript">
+$(function() {
+	App.connect();
+	App.view();
+	// App.view();
+	// App.init('#container');
+});
+</script>
+
+</body>
+</html>

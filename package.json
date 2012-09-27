@@ -1,0 +1,14 @@
+{
+  "author": "",
+  "name": "html5-security-cam",
+  "version": "0.0.0",
+  "dependencies": {
+    "socket.io": "~0.9.6",
+    "express": "~2.5.9"
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": "*"
+  }
+}
