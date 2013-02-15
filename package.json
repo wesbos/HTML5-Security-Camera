@@ -1,14 +1,19 @@
 {
   "author": "",
   "name": "html5-security-cam",
-  "version": "0.0.0",
+  "version": "0.0.0-8",
   "dependencies": {
     "socket.io": "~0.9.6",
-    "express": "~2.5.9"
+    "express": "~2.5.9",
+    "node-static": "~0.6.7"
   },
   "devDependencies": {},
   "optionalDependencies": {},
   "engines": {
     "node": "*"
+  },
+  "subdomain": "html5securitycam",
+  "scripts": {
+    "start": "server.js"
   }
 }

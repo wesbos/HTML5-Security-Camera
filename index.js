@@ -1,6 +1,6 @@
 window.App = App = {
 	
-	IPADDRESS : "http://test.com",
+	URL : "http://html5securitycam.jit.su:80",
 
 	init : function( selector ) {
 
@@ -49,9 +49,9 @@ window.App = App = {
 					if(!same) {
 						self.socket.emit('sendImage', { image : imageData });
 						console.log('sending image..');
-						/* var img = new Image();
+				    var img = new Image();
 							img.src = canvas.toDataURL("image/jpg");
-							imageDump.appendChild(img); */
+							imageDump.appendChild(img); 
 					}
 					document.body.style.backgroundColor = color;
 
@@ -59,6 +59,7 @@ window.App = App = {
 
 			},
 			function(err) {
+        alert('y\'all need getUserMedia to run ths demo!');
 				console.log("ERROR SON! ",err);
 			});
 
@@ -85,11 +86,12 @@ window.App = App = {
 		}
 	},
 	connect : function() {
-		this.socket = io.connect(App.IPADDRESS+':9000');
+		this.socket = io.connect(App.URL);
 		var dump = $('.imageDump');
 	},
 	sendImage : function( image ) {
-		this.socket.emit('sendImage',{
+    console.log('sending...');
+    this.socket.emit('sendImage',{
 			image : image
 		});
 	},
