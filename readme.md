@@ -4,10 +4,15 @@ Sends images from a device (index.html) to a viewer (viewer.html) over websocket
 
 Uses WebRTC getUserMedia(), `<video>`, `<canvas>`, Node.js and Socket.io
 
-Hacked together quickly for a demo at #screens12. Two things to note at the moment:
-
-1. The node server does serve up `index.html` or `viewer.html`
-1. There are three absolute URLS in `index.html`, `viewer.html` and `index.js` that you will need to change.
+Hacked together quickly for a demo at #screens12.
 
 
-This will all be cleaned up into a tidy node process very soon. thanks :) 
+# To Run
+
+Start the server:
+
+```
+node server.js
+```
+
+Point your browser to _http://localhost:8080_ or _http://localhost:8080/viewer.html_
