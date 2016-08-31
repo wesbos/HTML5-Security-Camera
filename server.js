@@ -1,24 +1,20 @@
 // Including libraries
 
-var app = require('http').createServer(handler),
-  io = require('socket.io').listen(app),
-  static = require('node-static'); // for serving files
+var http = require('http');
+const static = require('node-static'); // for serving files
 
-var fileServer = new static.Server('./');
+var fileServer = new static.Server('./client');
 
-app.listen(8080);
+const app = http.createServer((req, res) => {
+  req.addListener('end', function () {
+    fileServer.serve(req, res); // this will return the correct file
+  }).resume();
+}).listen(8080);;
 
-// If the URL of the socket server is opened in a browser
-function handler (request, response) {
-
-  request.addListener('end', function () {
-        fileServer.serve(request, response); // this will return the correct file
-    });
-}
-
+const io = require('socket.io').listen(app);
 
 io.sockets.on('connection', function (socket) {
-    
+
   socket.on('sendImage', function (data) {
     // console.log(data);
     socket.broadcast.emit('getImage',data);
