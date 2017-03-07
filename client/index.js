@@ -21,7 +21,6 @@ var App = {
 
 
 			navigator.getUserMedia({ video : true},function(stream){
-				console.log('wat');
 				// normalize the source stream
 				var src = (window.webkitURL) ? window.webkitURL.createObjectURL(stream) : stream;
 				// Prep Video
@@ -39,12 +38,10 @@ var App = {
 					lastPixels = currentPixels;
 					currentPixels = ctx.getImageData(0,0,canvas.width,canvas.height);
 
-					var same = App.utils.equal(lastPixels,currentPixels,150),
-						color = (same) ? "green" : "red",
-						imageData = canvas.toDataURL("image/jpg");
-
+					var same = App.utils.equal(lastPixels,currentPixels, 550);
+					var color = same ? "green" : "red",
+					var imageData = canvas.toDataURL("image/jpg");
 					// send image over socket
-
 
 					if(!same) {
 						self.socket.emit('sendImage', { image : imageData });
@@ -55,7 +52,7 @@ var App = {
 					}
 					document.body.style.backgroundColor = color;
 
-				}, 1000);
+				}, 100);
 
 			},
 			function(err) {
@@ -99,7 +96,7 @@ var App = {
 		var dump = $('.imageDump');
 		this.socket.on('getImage',function(data) {
 			console.log(data);
-			var image = new Image();
+			var image = new  Image();
 				image.src = data.image;
 				dump.prepend(image);
 			// console.log('getImage Triggered');

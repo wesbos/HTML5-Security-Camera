@@ -3,14 +3,23 @@
 	<title>HTML5 Security Camera</title>
 </head>
 <body>
-<div id="container"></div>
-
-<div class="imageDump">
-	
+<div class="wrap">
+  <div id="container"></div>
+  <div class="imageDump"></div>
 </div>
 
 <style type="text/css">
-	video {
+	body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .wrap {
+    max-width: 500px;
+  }
+  video {
 		display:none;
 	}
 	.imageDump img {
@@ -18,7 +27,7 @@
 	}
 </style>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <!-- <script src="http://test.com:9000/socket.io/socket.io.js"></script> -->
 <script src="/socket.io/socket.io.js"></script>
 <script src="index.js"></script>

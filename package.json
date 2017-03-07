@@ -13,6 +13,6 @@
   },
   "subdomain": "html5securitycam",
   "scripts": {
-    "start": "server.js"
+    "start": "node server.js"
   }
 }

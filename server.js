@@ -9,7 +9,7 @@ const app = http.createServer((req, res) => {
   req.addListener('end', function () {
     fileServer.serve(req, res); // this will return the correct file
   }).resume();
-}).listen(8080);;
+}).listen(7777);
 
 const io = require('socket.io').listen(app);
 
