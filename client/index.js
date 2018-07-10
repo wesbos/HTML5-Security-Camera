@@ -39,7 +39,7 @@ var App = {
 					currentPixels = ctx.getImageData(0,0,canvas.width,canvas.height);
 
 					var same = App.utils.equal(lastPixels,currentPixels, 550);
-					var color = same ? "green" : "red",
+					var color = same ? "green" : "red";
 					var imageData = canvas.toDataURL("image/jpg");
 					// send image over socket
 
