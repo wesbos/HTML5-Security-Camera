@@ -1,9 +1,6 @@
 var App = {
-
 	URL : window.location.origin,
-
 	init : function( selector ) {
-
 		navigator.getUserMedia = (navigator.getUserMedia) ? navigator.getUserMedia : navigator.webkitGetUserMedia;
 
 		// Setup Video
@@ -17,8 +14,6 @@ var App = {
 			imageDump = document.querySelector('.imageDump'),
 			currentPixels,
 			lastPixels;
-
-
 
 			navigator.getUserMedia({ video : true},function(stream){
 				// normalize the source stream
@@ -53,13 +48,11 @@ var App = {
 					document.body.style.backgroundColor = color;
 
 				}, 100);
-
 			},
 			function(err) {
-        alert('y\'all need getUserMedia to run ths demo!');
-				console.log("ERROR SON! ",err);
+                            alert('y\'all need getUserMedia to run ths demo!');
+			    console.log("ERROR SON! ",err);
 			});
-
 	},
 	utils : {
 		diff : function(array1, array2) {
@@ -68,18 +61,17 @@ var App = {
 			});
 		},
 		equal : function(a, b, tolerance) {
+			var
+				aData     = a && a.data || [],
+				bData     = b.data,
+				length    = aData.length,
+				i;
 
-		var
-			aData     = a && a.data || [],
-			bData     = b.data,
-			length    = aData.length,
-			i;
+			tolerance = tolerance || 0;
 
-		tolerance = tolerance || 0;
+			for (i = length; i--;) if (aData[i] !== bData[i] && Math.abs(aData[i] - bData[i]) > tolerance) return false;
 
-		for (i = length; i--;) if (aData[i] !== bData[i] && Math.abs(aData[i] - bData[i]) > tolerance) return false;
-
-		return true;
+			return true;
 		}
 	},
 	connect : function() {
@@ -87,10 +79,10 @@ var App = {
 		var dump = $('.imageDump');
 	},
 	sendImage : function( image ) {
-    console.log('sending...');
-    this.socket.emit('sendImage',{
-			image : image
-		});
+	    console.log('sending...');
+	    this.socket.emit('sendImage', {
+		image : image
+	    });
 	},
 	view : function() {
 		var dump = $('.imageDump');
@@ -101,9 +93,7 @@ var App = {
 				dump.prepend(image);
 			// console.log('getImage Triggered');
 		});
-
 	}
-
 };
 
 $(function() {
